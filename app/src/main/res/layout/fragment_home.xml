@@ -6,6 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".presentation.home.ui.HomeFragment">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <androidx.core.widget.ContentLoadingProgressBar
         android:id="@+id/pbLoader"
         style="@style/Widget.AppCompat.ProgressBar"
@@ -19,14 +35,14 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvRecipesList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:visibility="visible"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:visibility="visible"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout"
         tools:itemCount="10"
-        tools:listitem="@layout/layout_home_movie_list_item"/>
+        tools:listitem="@layout/layout_home_movie_list_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
