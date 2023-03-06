@@ -8,7 +8,7 @@ data class ResultRemote(
     @SerializedName("adult")
     val adult: Boolean,
     @SerializedName("backdrop_path")
-    val backdropPath: Any,
+    val backdropPath: String?,
     @SerializedName("genre_ids")
     val genreIds: List<Int>,
     @SerializedName("id")
@@ -22,7 +22,7 @@ data class ResultRemote(
     @SerializedName("popularity")
     val popularity: Double,
     @SerializedName("poster_path")
-    val posterPath: Any,
+    val posterPath: String?,
     @SerializedName("release_date")
     val releaseDate: String,
     @SerializedName("title")
@@ -50,6 +50,7 @@ fun ResultRemote.toDomainModel(): ResultDomainModel {
         title = title,
         video = video,
         voteAverage = voteAverage,
-        voteCount = voteCount
+        voteCount = voteCount,
+        rating = 0.0
     )
 }

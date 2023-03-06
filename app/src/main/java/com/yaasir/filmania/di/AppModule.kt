@@ -1,7 +1,7 @@
 package com.yaasir.filmania.di
 
-import com.yaasir.filmania.data.network.DetailRepositoryImp
-import com.yaasir.filmania.data.network.HomeRepositoryImp
+import com.yaasir.filmania.data.DetailRepositoryImp
+import com.yaasir.filmania.data.HomeRepositoryImp
 import com.yaasir.filmania.data.network.apiservice.FilmaniaApiService
 import com.yaasir.filmania.domain.repository.detail.DetailRepository
 import com.yaasir.filmania.domain.repository.home.HomeRepository

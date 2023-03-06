@@ -8,4 +8,5 @@ object Configs {
 object API {
     const val GET_MOVIES = "discover/movie"
     const val GET_MOVIE_DETAIL = "movie"
+    const val MOVIES_IMG_URL = "https://image.tmdb.org/t/p/original"
 }

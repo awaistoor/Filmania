@@ -1,4 +1,4 @@
-package com.yaasir.filmania.data.network
+package com.yaasir.filmania.data
 
 import com.yaasir.filmania.data.network.apiservice.FilmaniaApiService
 import com.yaasir.filmania.data.network.model.home.toDomainModel
