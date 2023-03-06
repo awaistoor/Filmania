@@ -8,7 +8,7 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="@dimen/_300dp"
         android:background="?colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,10 +18,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:title="@{viewModel.movie.title}">
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivBanner"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
@@ -33,20 +33,33 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?android:attr/actionBarSize"
-                app:layout_collapseMode="pin"
-                app:title="@{viewModel.movie.title}" />
+                app:layout_collapseMode="pin" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="200dp"
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/pbLoader"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.7" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nsvContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/_200dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -75,7 +88,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_14dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="@dimen/_24dp"
                     android:ellipsize="end"
                     android:maxLines="2"
                     android:textColor="@color/black"
@@ -117,11 +130,12 @@
                     android:isIndicator="true"
                     android:max="5"
                     android:rating="2"
+                    android:clickable="false"
                     android:scaleX=".5"
                     android:scaleY=".5"
                     android:stepSize=".5"
                     android:transformPivotX="@dimen/_10dp"
-                    android:transformPivotY="55dp"
+                    android:transformPivotY="@dimen/_55dp"
                     app:layout_constraintBottom_toBottomOf="@id/tvRating"
                     app:layout_constraintStart_toEndOf="@id/tvRating" />
 
@@ -131,8 +145,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_14dp"
                     android:layout_marginVertical="@dimen/_14dp"
-                    android:text="Overview"
-                    android:textSize="18sp"
+                    android:text="@string/overview"
+                    android:textSize="@dimen/_18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/ivMovieImg" />
@@ -140,7 +154,7 @@
                 <View
                     android:id="@+id/line"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/_1dp"
                     android:layout_marginVertical="@dimen/_14dp"
                     android:background="@android:color/darker_gray"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -164,8 +178,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_14dp"
                     android:layout_marginVertical="@dimen/_14dp"
-                    android:text="Genres"
-                    android:textSize="18sp"
+                    android:text="@string/genres"
+                    android:textSize="@dimen/_18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvDetail" />
@@ -173,7 +187,7 @@
                 <View
                     android:id="@+id/line2"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/_1dp"
                     android:layout_marginVertical="@dimen/_14dp"
                     android:background="@android:color/darker_gray"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -197,8 +211,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_14dp"
                     android:layout_marginVertical="@dimen/_14dp"
-                    android:text="Release"
-                    android:textSize="18sp"
+                    android:text="@string/release"
+                    android:textSize="@dimen/_18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvGenre" />
@@ -206,7 +220,7 @@
                 <View
                     android:id="@+id/line3"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/_1dp"
                     android:layout_marginVertical="@dimen/_14dp"
                     android:background="@android:color/darker_gray"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -230,8 +244,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_14dp"
                     android:layout_marginVertical="@dimen/_14dp"
-                    android:text="Runtime"
-                    android:textSize="18sp"
+                    android:text="@string/runtime"
+                    android:textSize="@dimen/_18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvReleaseDate" />
@@ -239,7 +253,7 @@
                 <View
                     android:id="@+id/line4"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/_1dp"
                     android:layout_marginVertical="@dimen/_14dp"
                     android:background="@android:color/darker_gray"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -263,8 +277,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_14dp"
                     android:layout_marginVertical="@dimen/_14dp"
-                    android:text="Budget"
-                    android:textSize="18sp"
+                    android:text="@string/budget"
+                    android:textSize="@dimen/_18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvRuntimeMin" />
@@ -272,7 +286,7 @@
                 <View
                     android:id="@+id/line5"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/_1dp"
                     android:layout_marginVertical="@dimen/_14dp"
                     android:background="@android:color/darker_gray"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -296,8 +310,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_14dp"
                     android:layout_marginVertical="@dimen/_14dp"
-                    android:text="Revenue"
-                    android:textSize="18sp"
+                    android:text="@string/revenue"
+                    android:textSize="@dimen/_18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvBudgetValue" />
@@ -305,7 +319,7 @@
                 <View
                     android:id="@+id/line6"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/_1dp"
                     android:layout_marginVertical="@dimen/_14dp"
                     android:background="@android:color/darker_gray"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -329,8 +343,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_14dp"
                     android:layout_marginVertical="@dimen/_14dp"
-                    android:text="Languages"
-                    android:textSize="18sp"
+                    android:text="@string/languages"
+                    android:textSize="@dimen/_18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvRevenueValue" />
@@ -338,7 +352,7 @@
                 <View
                     android:id="@+id/line7"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/_1dp"
                     android:layout_marginVertical="@dimen/_14dp"
                     android:background="@android:color/darker_gray"
                     app:layout_constraintEnd_toEndOf="parent"

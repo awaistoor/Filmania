@@ -16,5 +16,10 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.yaasir.filmania.presentation.detail.ui.DetailFragment"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="movieId"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
 </navigation>

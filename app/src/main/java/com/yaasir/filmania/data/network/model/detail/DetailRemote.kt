@@ -83,6 +83,7 @@ fun DetailRemote.toDomainModel(): DetailDomainModel {
         title = title,
         video = video,
         voteAverage = voteAverage,
-        voteCount = voteCount
+        voteCount = voteCount,
+        rating = 0.0
     )
 }

@@ -6,16 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.yaasir.filmania.R
 import com.yaasir.filmania.databinding.FragmentHomeBinding
 import com.yaasir.filmania.presentation.home.adapter.MoviesListAdapter
-import com.yaasir.filmania.presentation.home.model.MoviesUiModel
 import com.yaasir.filmania.presentation.home.model.ResultUiModel
 import com.yaasir.filmania.presentation.home.viewmodel.HomeViewModel
 import com.yaasir.filmania.utils.makeGone
 import com.yaasir.filmania.utils.makeVisible
 import com.yaasir.filmania.utils.showSnackBar
-import com.yaasir.filmania.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,7 +23,11 @@ class HomeFragment : Fragment() {
     private val viewModel: HomeViewModel by viewModels()
     private val adapter: MoviesListAdapter by lazy {
         MoviesListAdapter {
-            showToast(context, it.title)
+            findNavController().navigate(
+                HomeFragmentDirections.actionHomeFragmentToDetailFragment(
+                    movieId = it.id
+                )
+            )
         }
     }
 

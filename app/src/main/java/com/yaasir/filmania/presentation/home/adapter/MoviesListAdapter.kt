@@ -31,7 +31,7 @@ class MoviesListAdapter(private val onItemClicked: (ResultUiModel) -> Unit) :
             with(binding) {
                 tvMovieName.text = item.title
                 tvYear.text = item.releaseDate
-                tvRating.text = item.voteAverage.toString()
+                tvRating.text = String.format("%.1f", item.voteAverage)
                 ivMovieImg.loadImage(item.posterPath)
                 rbRating.rating = item.rating.toFloat()
                 cvItemContainer.setOnClickListener { onItemClicked(item) }

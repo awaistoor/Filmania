@@ -11,4 +11,9 @@
     <dimen name="_10dp">10dp</dimen>
     <dimen name="_35dp">35dp</dimen>
     <dimen name="_350dp">350dp</dimen>
+    <dimen name="_300dp">300dp</dimen>
+    <dimen name="_24dp">24dp</dimen>
+    <dimen name="_55dp">55dp</dimen>
+    <dimen name="_18sp">18sp</dimen>
+    <dimen name="_1dp">1dp</dimen>
 </resources>

@@ -6,13 +6,13 @@ import javax.inject.Inject
 
 class GetMoviesListUseCase @Inject constructor(
     private val homeRepository: HomeRepository,
-    private val formatDateUseCase: FormatDateUseCase,
+    private val formatDateToYearUseCase: FormatDateToYearUseCase,
     private val convertVoteToRatingUseCase: ConvertVoteToRatingUseCase
 ) {
     suspend operator fun invoke(): MoviesDomainModel {
         val movies = homeRepository.getTrendingMovies()
         movies.results.map {
-            it.releaseDate = formatDateUseCase(it.releaseDate)
+            it.releaseDate = formatDateToYearUseCase(it.releaseDate)
             it.rating = convertVoteToRatingUseCase(it.voteAverage)
         }
         return movies
