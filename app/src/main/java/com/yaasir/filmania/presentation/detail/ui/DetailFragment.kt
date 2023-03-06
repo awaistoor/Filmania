@@ -1,12 +1,12 @@
 package com.yaasir.filmania.presentation.detail.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.navArgs
 import com.yaasir.filmania.R
 import com.yaasir.filmania.databinding.FragmentDetailBinding
 import com.yaasir.filmania.presentation.detail.model.DetailUiModel
@@ -32,9 +32,14 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupToolbar()
         observeUiState()
     }
 
+    private fun setupToolbar() {
+        (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
+
+    }
 
     private fun observeUiState() {
         viewModel.initialFetchViewState.observe(viewLifecycleOwner) {
