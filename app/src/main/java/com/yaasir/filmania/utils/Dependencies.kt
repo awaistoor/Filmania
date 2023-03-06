@@ -7,4 +7,5 @@ object Configs {
 
 object API {
     const val GET_MOVIES = "discover/movie"
+    const val GET_MOVIE_DETAIL = "movie"
 }

@@ -1,7 +1,9 @@
 package com.yaasir.filmania.di
 
+import com.yaasir.filmania.data.network.DetailRepositoryImp
 import com.yaasir.filmania.data.network.HomeRepositoryImp
 import com.yaasir.filmania.data.network.apiservice.FilmaniaApiService
+import com.yaasir.filmania.domain.repository.detail.DetailRepository
 import com.yaasir.filmania.domain.repository.home.HomeRepository
 import com.yaasir.filmania.utils.Configs
 import dagger.Binds
@@ -20,6 +22,9 @@ import javax.inject.Singleton
 abstract class AppModule {
     @Binds
     abstract fun provideHomeRepository(homeRepositoryImp: HomeRepositoryImp): HomeRepository
+
+    @Binds
+    abstract fun provideDetailRepository(detailRepositoryImp: DetailRepositoryImp): DetailRepository
 
     companion object {
         @Singleton
