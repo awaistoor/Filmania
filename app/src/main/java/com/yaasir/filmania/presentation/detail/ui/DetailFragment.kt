@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.yaasir.filmania.R
 import com.yaasir.filmania.databinding.FragmentDetailBinding
-import com.yaasir.filmania.domain.usecase.ConvertNumberIntoPrettyCurrency
+import com.yaasir.filmania.domain.usecase.ConvertNumberIntoPrettyCurrencyUseCase
 import com.yaasir.filmania.presentation.detail.model.DetailUiModel
 import com.yaasir.filmania.presentation.detail.viewmodel.DetailViewModel
 import com.yaasir.filmania.utils.loadImage
@@ -22,7 +22,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class DetailFragment : Fragment() {
     @Inject
-    lateinit var convertNumberIntoPrettyCurrency: ConvertNumberIntoPrettyCurrency
+    lateinit var convertNumberIntoPrettyCurrencyUseCase: ConvertNumberIntoPrettyCurrencyUseCase
     private lateinit var binding: FragmentDetailBinding
     private val viewModel: DetailViewModel by viewModels()
     override fun onCreateView(
@@ -80,8 +80,8 @@ class DetailFragment : Fragment() {
             tvGenre.text = detailUiModel.genres.joinToString { it.name }
             tvReleaseDate.text = detailUiModel.releaseDate
             tvRuntimeMin.text = "${detailUiModel.runtime} mins"
-            tvBudgetValue.text = "USD ${convertNumberIntoPrettyCurrency(detailUiModel.budget)}"
-            tvRevenueValue.text = "USD ${convertNumberIntoPrettyCurrency(detailUiModel.revenue)}"
+            tvBudgetValue.text = "USD ${convertNumberIntoPrettyCurrencyUseCase(detailUiModel.budget)}"
+            tvRevenueValue.text = "USD ${convertNumberIntoPrettyCurrencyUseCase(detailUiModel.revenue)}"
             tvLanguagesValue.text =
                 detailUiModel.spokenLanguages.joinToString { it.englishName }
             rbRating.rating = detailUiModel.rating.toFloat()

@@ -6,7 +6,8 @@ plugins {
     id 'androidx.navigation.safeargs.kotlin'
 }
 
-//// load secret properties file for apk signing
+// load secret properties file for apk signing
+// normally you want to make sure to put secrets.properties into .gitignore and add it through your pipeline for prod
 Properties properties = new Properties()
 properties.load(project.rootProject.file('secrets.properties').newDataInputStream())
 

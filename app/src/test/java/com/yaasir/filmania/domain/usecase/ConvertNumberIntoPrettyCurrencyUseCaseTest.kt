@@ -11,13 +11,13 @@ import org.mockito.junit.MockitoJUnitRunner
 import java.util.*
 
 @RunWith(MockitoJUnitRunner::class)
-class ConvertNumberIntoPrettyCurrencyTest {
-    private lateinit var SUT: ConvertNumberIntoPrettyCurrency
+class ConvertNumberIntoPrettyCurrencyUseCaseTest {
+    private lateinit var SUT: ConvertNumberIntoPrettyCurrencyUseCase
 
     @Before
     fun setup() {
         MockitoAnnotations.openMocks(this)
-        SUT = ConvertNumberIntoPrettyCurrency()
+        SUT = ConvertNumberIntoPrettyCurrencyUseCase()
     }
 
     @Test
