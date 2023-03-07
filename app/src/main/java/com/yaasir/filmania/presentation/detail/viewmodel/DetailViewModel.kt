@@ -24,7 +24,7 @@ class DetailViewModel @Inject constructor(
         getMoviesDetail(args.movieId)
     }
 
-    fun getMoviesDetail(movieId: Int) =
+    private fun getMoviesDetail(movieId: Int) =
         viewModelScope.launch {
             initialFetchViewState.postValue(InitialDetailFetchViewState.Loading)
             try {

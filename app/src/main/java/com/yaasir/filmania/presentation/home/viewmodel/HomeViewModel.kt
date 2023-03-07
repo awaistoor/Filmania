@@ -20,7 +20,7 @@ class HomeViewModel @Inject constructor(private val getMoviesListUseCase: GetMov
         getMovies()
     }
 
-    fun getMovies() = viewModelScope.launch {
+    private fun getMovies() = viewModelScope.launch {
         initialFetchUiState.postValue(InitialFetchViewState.Loading)
         try {
             val result = getMoviesListUseCase.invoke()
