@@ -1,6 +1,7 @@
 package com.yaasir.filmania.utils
 
 import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.yaasir.filmania.R
@@ -12,10 +13,11 @@ import com.yaasir.filmania.R
  * @param url as [String]
  */
 fun ImageView.loadImage(url: String?) {
-    val circularProgressDrawable = CircularProgressDrawable(context)
-    circularProgressDrawable.strokeWidth = 5f
-    circularProgressDrawable.centerRadius = 30f
-    circularProgressDrawable.setColorSchemeColors(R.color.blue_500)
+    val circularProgressDrawable = CircularProgressDrawable(context).apply {
+        strokeWidth = 5f
+        centerRadius= 30f
+        setColorSchemeColors(ContextCompat.getColor(context, R.color.blue_500))
+    }
     circularProgressDrawable.start()
     Glide.with(this).load(Configs.MOVIES_IMG_URL + url).placeholder(circularProgressDrawable)
         .centerCrop().into(this)
