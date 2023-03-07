@@ -6,7 +6,7 @@ import androidx.lifecycle.SavedStateHandle
 import com.yaasir.filmania.domain.model.detail.*
 import com.yaasir.filmania.domain.usecase.GetMovieDetailUseCase
 import com.yaasir.filmania.presentation.detail.model.toUiModel
-import com.yaasir.filmania.presentation.detail.ui.InitialDetailFetchViewState
+import com.yaasir.filmania.presentation.detail.ui.DetailViewState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.resetMain
@@ -35,7 +35,7 @@ class DetailViewModelTest {
     private lateinit var savedStateHandle: SavedStateHandle
 
     @Mock
-    private lateinit var initialFetchViewStateObserver: Observer<InitialDetailFetchViewState>
+    private lateinit var initialFetchViewStateObserver: Observer<DetailViewState>
 
     @Before
     fun setup() {
@@ -52,14 +52,14 @@ class DetailViewModelTest {
 
         // region Act
         SUT = DetailViewModel(getMovieDetailUseCase, savedStateHandle)
-        SUT.initialFetchViewState.observeForever(initialFetchViewStateObserver)
+        SUT.detailViewState.observeForever(initialFetchViewStateObserver)
         // endregion
 
         // region Assert
         Mockito.verify(getMovieDetailUseCase).invoke(getDummyMovieId())
         Mockito.verify(initialFetchViewStateObserver)
-            .onChanged(InitialDetailFetchViewState.Success(model.toUiModel()))
-        SUT.initialFetchViewState.removeObserver(initialFetchViewStateObserver)
+            .onChanged(DetailViewState.Success(model.toUiModel()))
+        SUT.detailViewState.removeObserver(initialFetchViewStateObserver)
         // endregion
     }
 
@@ -71,14 +71,14 @@ class DetailViewModelTest {
 
         // region Act
         SUT = DetailViewModel(getMovieDetailUseCase, savedStateHandle)
-        SUT.initialFetchViewState.observeForever(initialFetchViewStateObserver)
+        SUT.detailViewState.observeForever(initialFetchViewStateObserver)
         // endregion
 
         // region Assert
         Mockito.verify(getMovieDetailUseCase).invoke(getDummyMovieId())
         Mockito.verify(initialFetchViewStateObserver)
-            .onChanged(InitialDetailFetchViewState.Error)
-        SUT.initialFetchViewState.removeObserver(initialFetchViewStateObserver)
+            .onChanged(DetailViewState.Error)
+        SUT.detailViewState.removeObserver(initialFetchViewStateObserver)
         // endregion
     }
 

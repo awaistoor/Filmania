@@ -45,15 +45,15 @@ class DetailFragment : Fragment() {
     }
 
     private fun observeUiState() {
-        viewModel.initialFetchViewState.observe(viewLifecycleOwner) {
+        viewModel.detailViewState.observe(viewLifecycleOwner) {
             when (it) {
-                InitialDetailFetchViewState.Error -> {
+                DetailViewState.Error -> {
                     showError()
                 }
-                InitialDetailFetchViewState.Loading -> {
+                DetailViewState.Loading -> {
                     showLoading()
                 }
-                is InitialDetailFetchViewState.Success -> {
+                is DetailViewState.Success -> {
                     showData(it.detailUiModel)
                 }
             }

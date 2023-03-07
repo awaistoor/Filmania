@@ -55,15 +55,15 @@ class HomeFragment : Fragment() {
     }
 
     private fun observeUiState() {
-        viewModel.initialFetchUiState.observe(viewLifecycleOwner) {
+        viewModel.homeViewState.observe(viewLifecycleOwner) {
             when (it) {
-                InitialFetchViewState.Error -> {
+                HomeViewState.Error -> {
                     showError()
                 }
-                InitialFetchViewState.Loading -> {
+                HomeViewState.Loading -> {
                     showLoading()
                 }
-                is InitialFetchViewState.Success -> {
+                is HomeViewState.Success -> {
                     showData(it.moviesUiModel.results)
                 }
             }

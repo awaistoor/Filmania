@@ -1,11 +1,12 @@
 package com.yaasir.filmania.presentation.home.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yaasir.filmania.domain.usecase.GetMoviesListUseCase
 import com.yaasir.filmania.presentation.home.model.toUiModel
-import com.yaasir.filmania.presentation.home.ui.InitialFetchViewState
+import com.yaasir.filmania.presentation.home.ui.HomeViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -13,8 +14,11 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val getMoviesListUseCase: GetMoviesListUseCase) :
     ViewModel() {
-    // a mutable live data to observe the UI state in View
-    val initialFetchUiState = MutableLiveData<InitialFetchViewState>()
+    // a mutable live data to observe the UI state
+    private val homeUiState = MutableLiveData<HomeViewState>()
+
+    // a live data which will expose view state to the view
+    val homeViewState: LiveData<HomeViewState> = homeUiState
 
     init {
         // request data on start of this view model
@@ -23,15 +27,15 @@ class HomeViewModel @Inject constructor(private val getMoviesListUseCase: GetMov
 
     private fun getMovies() = viewModelScope.launch {
         // emit UI state to loading
-        initialFetchUiState.postValue(InitialFetchViewState.Loading)
+        homeUiState.postValue(HomeViewState.Loading)
         try {
             val result = getMoviesListUseCase.invoke()
             // emit UI state to Success with UI model list
-            initialFetchUiState.postValue(InitialFetchViewState.Success(result.toUiModel()))
+            homeUiState.postValue(HomeViewState.Success(result.toUiModel()))
         } catch (ex: Exception) {
             ex.printStackTrace()
             // emit UI state to error
-            initialFetchUiState.postValue(InitialFetchViewState.Error)
+            homeUiState.postValue(HomeViewState.Error)
         }
     }
 

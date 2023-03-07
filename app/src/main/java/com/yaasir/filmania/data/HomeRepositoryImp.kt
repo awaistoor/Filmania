@@ -2,7 +2,6 @@ package com.yaasir.filmania.data
 
 import com.yaasir.filmania.data.network.apiservice.FilmaniaApiService
 import com.yaasir.filmania.data.network.model.home.toDomainModel
-import com.yaasir.filmania.domain.model.detail.DetailDomainModel
 import com.yaasir.filmania.domain.model.home.MoviesDomainModel
 import com.yaasir.filmania.domain.repository.home.HomeRepository
 import javax.inject.Inject
