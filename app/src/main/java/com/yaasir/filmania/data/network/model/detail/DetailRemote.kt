@@ -16,7 +16,7 @@ data class DetailRemote(
     @SerializedName("belongs_to_collection")
     val belongsToCollection: Any?,
     @SerializedName("budget")
-    val budget: Int,
+    val budget: Double,
     @SerializedName("genres")
     val genres: List<GenreRemote>,
     @SerializedName("homepage")
@@ -42,7 +42,7 @@ data class DetailRemote(
     @SerializedName("release_date")
     val releaseDate: String,
     @SerializedName("revenue")
-    val revenue: Int,
+    val revenue: Double,
     @SerializedName("runtime")
     val runtime: Int,
     @SerializedName("spoken_languages")

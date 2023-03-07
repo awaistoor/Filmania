@@ -8,10 +8,10 @@ import javax.inject.Inject
  * [ConvertNumberIntoPrettyCurrencyUseCase]
  * A use case implementation for converting long integer values into [CompactDecimalFormat]
  * for example: 1000 will become 1K
- * the [invoke] function take [Int] as parameter and returns formatted [String]
+ * the [invoke] function take [Double] as parameter and returns formatted [String]
  */
 class ConvertNumberIntoPrettyCurrencyUseCase @Inject constructor() {
-    operator fun invoke(value: Int) : String =
+    operator fun invoke(value: Double) : String =
         CompactDecimalFormat.getInstance(
             Locale.getDefault(),
             CompactDecimalFormat.CompactStyle.SHORT
