@@ -30,8 +30,13 @@ class HomeRepositoryImpTest {
 
     @Test
     fun testGetTrendingMovies() = runBlocking {
+        // region Arrange
         Mockito.`when`(apiService.getMovies()).thenReturn(getDummyMoviesModel())
+        // endregion
+
+        // region Assert
         Assert.assertEquals(apiService.getMovies().toDomainModel(), SUT.getTrendingMovies())
+        // endregion
     }
 
     private fun getDummyMoviesModel(): MoviesRemote {

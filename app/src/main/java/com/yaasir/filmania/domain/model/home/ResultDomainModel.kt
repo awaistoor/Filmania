@@ -1,8 +1,9 @@
 package com.yaasir.filmania.domain.model.home
 
-import com.yaasir.filmania.presentation.home.model.ResultUiModel
-
-
+/**
+ * [ResultDomainModel]
+ * Result model for domain layer
+ */
 data class ResultDomainModel(
     val adult: Boolean,
     val backdropPath: String?,
@@ -20,23 +21,3 @@ data class ResultDomainModel(
     val voteCount: Int,
     var rating: Double
 )
-
-fun ResultDomainModel.toUiModel(): ResultUiModel {
-    return ResultUiModel(
-        adult = adult,
-        backdropPath = backdropPath,
-        genreIds = genreIds,
-        id = id,
-        originalLanguage = originalLanguage,
-        originalTitle = originalTitle,
-        overview = overview,
-        popularity = popularity,
-        posterPath = posterPath,
-        releaseDate = releaseDate,
-        title = title,
-        video = video,
-        voteAverage = voteAverage,
-        voteCount = voteCount,
-        rating = rating
-    )
-}

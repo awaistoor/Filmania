@@ -1,6 +1,11 @@
 package com.yaasir.filmania.presentation.detail.model
 
+import com.yaasir.filmania.domain.model.detail.DetailDomainModel
 
+/**
+ * [DetailUiModel]
+ * UI model for presentation layer
+ */
 data class DetailUiModel(
     val adult: Boolean,
     val backdropPath: String,
@@ -29,3 +34,39 @@ data class DetailUiModel(
     val voteCount: Int,
     val rating: Double
 )
+
+/**
+ * [DetailDomainModel.toUiModel]
+ * Extension function to convert domain model to UI model
+ * @return [DetailUiModel]
+ */
+fun DetailDomainModel.toUiModel(): DetailUiModel {
+    return DetailUiModel(
+        adult = adult,
+        backdropPath = backdropPath,
+        belongsToCollection = belongsToCollection,
+        budget = budget,
+        genres = genres.map { it.toUiModel() },
+        homepage = homepage,
+        id = id,
+        imdbId = imdbId,
+        originalLanguage = originalLanguage,
+        originalTitle = originalTitle,
+        overview = overview,
+        popularity = popularity,
+        posterPath = posterPath,
+        productionCompanies = productionCompanies.map { it.toUiModel() },
+        productionCountries = productionCountries.map { it.toUiModel() },
+        releaseDate = releaseDate,
+        revenue = revenue,
+        runtime = runtime,
+        spokenLanguages = spokenLanguages.map { it.toUiModel() },
+        status = status,
+        tagline = tagline,
+        title = title,
+        video = video,
+        voteAverage = voteAverage,
+        voteCount = voteCount,
+        rating = rating
+    )
+}

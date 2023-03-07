@@ -5,6 +5,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.SavedStateHandle
 import com.yaasir.filmania.domain.model.detail.*
 import com.yaasir.filmania.domain.usecase.GetMovieDetailUseCase
+import com.yaasir.filmania.presentation.detail.model.toUiModel
 import com.yaasir.filmania.presentation.detail.ui.InitialDetailFetchViewState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -44,25 +45,41 @@ class DetailViewModelTest {
 
     @Test
     fun `on viewModel load,invoke getMovieDetailUseCase, return success with data`() = runTest {
+        // region Arrange
         val model = getDummyDetailModel()
         Mockito.`when`(getMovieDetailUseCase(getDummyMovieId())).thenReturn(model)
+        // endregion
+
+        // region Act
         SUT = DetailViewModel(getMovieDetailUseCase, savedStateHandle)
         SUT.initialFetchViewState.observeForever(initialFetchViewStateObserver)
+        // endregion
+
+        // region Assert
         Mockito.verify(getMovieDetailUseCase).invoke(getDummyMovieId())
         Mockito.verify(initialFetchViewStateObserver)
             .onChanged(InitialDetailFetchViewState.Success(model.toUiModel()))
         SUT.initialFetchViewState.removeObserver(initialFetchViewStateObserver)
+        // endregion
     }
 
     @Test
     fun `on viewModel load,invoke getMovieDetailUseCase, throw exception, return error`() = runTest {
+        // region Arrange
         Mockito.`when`(getMovieDetailUseCase(getDummyMovieId())).thenThrow(RuntimeException())
+        // endregion
+
+        // region Act
         SUT = DetailViewModel(getMovieDetailUseCase, savedStateHandle)
         SUT.initialFetchViewState.observeForever(initialFetchViewStateObserver)
+        // endregion
+
+        // region Assert
         Mockito.verify(getMovieDetailUseCase).invoke(getDummyMovieId())
         Mockito.verify(initialFetchViewStateObserver)
             .onChanged(InitialDetailFetchViewState.Error)
         SUT.initialFetchViewState.removeObserver(initialFetchViewStateObserver)
+        // endregion
     }
 
 

@@ -17,6 +17,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
+/**
+ * [AppModule]
+ * DI module for whole app
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class AppModule {
@@ -34,6 +38,7 @@ abstract class AppModule {
             logger.level = HttpLoggingInterceptor.Level.BASIC
             return OkHttpClient.Builder()
                 .addInterceptor(logger)
+                // adding an interceptor here for api_key so that it can be available for every api request
                 .addInterceptor {
                     it.proceed(
                         it.request().newBuilder().url(

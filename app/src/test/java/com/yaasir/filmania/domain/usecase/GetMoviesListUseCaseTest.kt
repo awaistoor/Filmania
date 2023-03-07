@@ -39,25 +39,38 @@ class GetMoviesListUseCaseTest {
 
     @Test
     fun testInvoke() = runBlocking {
+        // region Arrange
         val model = getDummyMoviesModel()
         Mockito.`when`(homeRepository.getTrendingMovies()).thenReturn(model)
         Mockito.`when`(formatDateToYearUseCase(getDummyDate())).thenReturn(getDummyFormattedDate())
         Mockito.`when`(convertVoteToRatingUseCase(0.0)).thenReturn(0.0)
+        // endregion
+
+        // region Assert
         Assert.assertEquals(SUT.invoke(), model)
+        // endregion
     }
 
     @Test
     fun `when invoke, verify homeRepository,formatDateToYearUseCase and convertVoteToRatingUseCase are invoked`(): Unit =
         runBlocking {
+            // region Arrange
             val model = getDummyMoviesModel()
             Mockito.`when`(homeRepository.getTrendingMovies()).thenReturn(model)
             Mockito.`when`(formatDateToYearUseCase(getDummyDate()))
                 .thenReturn(getDummyFormattedDate())
             Mockito.`when`(convertVoteToRatingUseCase(0.0)).thenReturn(0.0)
+            // endregion
+
+            // region Act
             SUT.invoke()
+            // endregion
+
+            // region Assert
             Mockito.verify(homeRepository).getTrendingMovies()
             Mockito.verify(formatDateToYearUseCase).invoke(getDummyDate())
             Mockito.verify(convertVoteToRatingUseCase).invoke(0.0)
+            // endregion
         }
 
     private fun getDummyFormattedDate(): String = "March 20, 2023"

@@ -1,8 +1,10 @@
 package com.yaasir.filmania.domain.model.detail
 
-import com.yaasir.filmania.presentation.detail.model.DetailUiModel
 
-
+/**
+ * [DetailDomainModel]
+ * Movie detail model for domain layer
+ */
 data class DetailDomainModel(
     val adult: Boolean,
     val backdropPath: String,
@@ -31,34 +33,3 @@ data class DetailDomainModel(
     val voteCount: Int,
     var rating: Double
 )
-
-fun DetailDomainModel.toUiModel(): DetailUiModel {
-    return DetailUiModel(
-        adult = adult,
-        backdropPath = backdropPath,
-        belongsToCollection = belongsToCollection,
-        budget = budget,
-        genres = genres.map { it.toUiModel() },
-        homepage = homepage,
-        id = id,
-        imdbId = imdbId,
-        originalLanguage = originalLanguage,
-        originalTitle = originalTitle,
-        overview = overview,
-        popularity = popularity,
-        posterPath = posterPath,
-        productionCompanies = productionCompanies.map { it.toUiModel() },
-        productionCountries = productionCountries.map { it.toUiModel() },
-        releaseDate = releaseDate,
-        revenue = revenue,
-        runtime = runtime,
-        spokenLanguages = spokenLanguages.map { it.toUiModel() },
-        status = status,
-        tagline = tagline,
-        title = title,
-        video = video,
-        voteAverage = voteAverage,
-        voteCount = voteCount,
-        rating = rating
-    )
-}

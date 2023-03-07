@@ -21,12 +21,16 @@ class FormatDateToReadableUseCaseTest {
 
     @Test
     fun testInvoke() {
+        // region Assert
         Assert.assertEquals(SUT.invoke(getDummyDate()), getFormattedDate())
+        // endregion
     }
 
     @Test(expected = ParseException::class)
     fun `when given wrong date format, throws exception`() {
+        // region Assert
         Assert.assertEquals(SUT.invoke(getFormattedDate()), getFormattedDate())
+        // endregion
     }
 
     private fun getFormattedDate(): String = "March 07, 2023"

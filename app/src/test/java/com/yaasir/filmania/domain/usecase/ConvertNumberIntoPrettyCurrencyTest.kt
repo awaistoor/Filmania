@@ -22,8 +22,13 @@ class ConvertNumberIntoPrettyCurrencyTest {
 
     @Test
     fun `when given int, return string value`() {
+        // region Arrange
         Mockito.`when`(CompactDecimalFormat.getInstance()).thenReturn(CompactDecimalFormat.getInstance())
+        // endregion
+
+        // region Assert
         Assert.assertTrue(SUT.invoke(getDummyIntValue()) is String)
+        // endregion
     }
 
     private fun getDummyIntValue(): Int = 100000

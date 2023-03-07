@@ -28,12 +28,17 @@ class DetailRepositoryImpTest {
 
     @Test
     fun testGetMovieDetail() = runBlocking {
+        // region Arrange
         Mockito.`when`(apiService.getMovieDetail(getDummyMovieId()))
             .thenReturn(getDummyDetailModel())
+        // endregion
+
+        // region Assert
         Assert.assertEquals(
             apiService.getMovieDetail(getDummyMovieId()).toDomainModel(),
             SUT.getMovieDetail(getDummyMovieId())
         )
+        // endregion
     }
 
     private fun getDummyDetailModel(): DetailRemote {

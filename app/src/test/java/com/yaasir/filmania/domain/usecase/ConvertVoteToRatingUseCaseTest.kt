@@ -21,11 +21,15 @@ class ConvertVoteToRatingUseCaseTest {
 
     @Test
     fun testInvoke() {
+        // region Assert
         Assert.assertEquals(2.0, SUT.invoke(4.0), 0.0)
+        // endregion
     }
 
     @Test
     fun `when invoke, confirm that the return value is double`() {
+        // region Assert
         Assert.assertTrue(SUT.invoke(4.0) is Double)
+        // endregion
     }
 }

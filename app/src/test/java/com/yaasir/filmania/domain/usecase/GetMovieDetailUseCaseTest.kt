@@ -39,26 +39,39 @@ class GetMovieDetailUseCaseTest {
 
     @Test
     fun testInvoke() = runBlocking {
+        // region Arrange
         val model = getDummyDetailModel()
         Mockito.`when`(detailRepository.getMovieDetail(getDummyMovieId())).thenReturn(model)
         Mockito.`when`(formatDateToReadableUseCase(getDummyDate()))
             .thenReturn(getDummyFormattedDate())
         Mockito.`when`(convertVoteToRatingUseCase(0.0)).thenReturn(0.0)
+        // endregion
+
+        // region Assert
         Assert.assertEquals(SUT.invoke(getDummyMovieId()), model)
+        // endregion
     }
 
     @Test
     fun `when invoke, verify detailRepository and formatDateToReadableUseCase and convertVoteToRatingUseCase are invoked`(): Unit =
         runBlocking {
+            // region Arrange
             val model = getDummyDetailModel()
             Mockito.`when`(detailRepository.getMovieDetail(getDummyMovieId())).thenReturn(model)
             Mockito.`when`(formatDateToReadableUseCase(getDummyDate()))
                 .thenReturn(getDummyFormattedDate())
             Mockito.`when`(convertVoteToRatingUseCase(0.0)).thenReturn(0.0)
+            // endregion
+
+            // region Act
             SUT.invoke(getDummyMovieId())
+            // endregion
+
+            // region Assert
             Mockito.verify(detailRepository).getMovieDetail(getDummyMovieId())
             Mockito.verify(formatDateToReadableUseCase).invoke(getDummyDate())
             Mockito.verify(convertVoteToRatingUseCase).invoke(0.0)
+            // endregion
         }
 
     private fun getDummyFormattedDate(): String = "March 20, 2023"

@@ -4,8 +4,8 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.yaasir.filmania.domain.model.home.MoviesDomainModel
 import com.yaasir.filmania.domain.model.home.ResultDomainModel
-import com.yaasir.filmania.domain.model.home.toUiModel
 import com.yaasir.filmania.domain.usecase.GetMoviesListUseCase
+import com.yaasir.filmania.presentation.home.model.toUiModel
 import com.yaasir.filmania.presentation.home.ui.InitialFetchViewState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

@@ -4,6 +4,10 @@ package com.yaasir.filmania.data.network.model.detail
 import com.google.gson.annotations.SerializedName
 import com.yaasir.filmania.domain.model.detail.ProductionCompanyDomainModel
 
+/**
+ * [ProductionCompanyRemote]
+ * Remote model for network layer
+ */
 data class ProductionCompanyRemote(
     @SerializedName("id")
     val id: Int,
@@ -15,6 +19,11 @@ data class ProductionCompanyRemote(
     val originCountry: String
 )
 
+/**
+ * [ProductionCompanyRemote.toDomainModel]
+ * Extension function to convert remote model to domain model
+ * @return [ProductionCompanyDomainModel]
+ */
 fun ProductionCompanyRemote.toDomainModel(): ProductionCompanyDomainModel {
     return ProductionCompanyDomainModel(
         id = id,

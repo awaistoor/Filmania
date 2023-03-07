@@ -4,6 +4,10 @@ package com.yaasir.filmania.data.network.model.detail
 import com.google.gson.annotations.SerializedName
 import com.yaasir.filmania.domain.model.detail.DetailDomainModel
 
+/**
+ * [DetailRemote]
+ * Remote model for network layer
+ */
 data class DetailRemote(
     @SerializedName("adult")
     val adult: Boolean,
@@ -57,6 +61,11 @@ data class DetailRemote(
     val voteCount: Int
 )
 
+/**
+ * [DetailRemote.toDomainModel]
+ * Extension function to convert remote model to domain model
+ * @return [DetailDomainModel]
+ */
 fun DetailRemote.toDomainModel(): DetailDomainModel {
     return DetailDomainModel(
         adult = adult,
