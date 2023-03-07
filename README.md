@@ -1,9 +1,15 @@
+<img src="https://digitaltimes-media.s3.amazonaws.com/original_images/09fa1ca_1667900502522-yassir.v1.jpg"  height=150 alt="Filmania App" />
 
 # Filmania Android App
 
 An android and koltin based application as a technical challenge from Yassir.
 
 ![Version v1.0 Badge][version-badge] ![Android 33+ Badge][android-version-badge] ![Kotlin 1.7.41 Badge][kotlin-version-badge]
+
+## Demo
+
+
+https://user-images.githubusercontent.com/3141921/223534324-8d60763a-f5f9-4b9e-86c9-6f3185144a05.mp4
 
 
 
@@ -34,6 +40,7 @@ targetSdkVersion 33
 - Different data models are used to decouple each layer.
 - Single Activity with fragment is used.
 - `Mockito` is used to unit test each layer.
+- Dark Mode is supported in the app.
 
 #### Further enhancements
 
